@@ -10,10 +10,12 @@ export class AuthService {
   private http = inject(HttpClient);
   private apiUrl = environment.apiUrl;
 
+  // Envía los datos al servidor y reacciona a la respuesta
   login(credentials: any) {
     return this.http.post<any>(`${this.apiUrl}/api/auth/login`, credentials).pipe(
       tap((res) => {
-        // Suponiendo que el backend devuelve { token, rol, barbero_id }
+        // Se guarda la sesión en el navegador del cliente
+        //Suponiendo que el backend devuelve ( token, rol, barbero_id )
         localStorage.setItem('token', res.token);
         localStorage.setItem('rol', res.rol);
         if (res.barbero_id) {
@@ -23,7 +25,15 @@ export class AuthService {
     );
   }
 
+  register(userData: any) {
+    return this.http.post<any>(`${this.apiUrl}/api/auth/register`, userData);
+  }
+
   getRole(): string | null {
     return localStorage.getItem('rol');
+  }
+
+  logout() {
+    localStorage.clear(); // Borra todo (token, rol, id)
   }
 }

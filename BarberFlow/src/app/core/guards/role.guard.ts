@@ -5,20 +5,22 @@ import { AuthService } from '../services/auth/auth.service';
 export const roleGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
   const router = inject(Router);
-  //const tokenData = authService.getDecodedToken(); // Método que usa jwt-decode
 
-  const expectedRole = route.data['expectedRole']; // Definido en el routing
-  const { rol, barbero_id } = tokenData;
+  // Se recuperan los datos guardados en el login
+  const rol = localStorage.getItem('rol');
+  const barbero_id = localStorage.getItem('barbero_id');
+  const expectedRole = route.data['expectedRole'];
 
-  // Lógica especial: Si es admin con ID de barbero, tiene "superpoderes"
-  if (rol === 'admin' && barbero_id != null) {
-    return true; // Acceso total
+  // Lógica de admin
+  if (rol === 'admin' && barbero_id !== null) {
+    return true;
   }
 
+  // Lógica de rol normal
   if (rol === expectedRole) {
     return true;
   }
 
-  router.navigate(['/unauthorized']);
+  router.navigate(['/login']);
   return false;
 };
