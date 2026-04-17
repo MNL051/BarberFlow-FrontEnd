@@ -14,7 +14,7 @@ const ESTADO_CANCELADA = 'cancelada';
 })
 export class MisCitasComponent implements OnInit {
   private appointmentsService = inject(AppointmentsService);
-  //citas: any[] = []; empty
+  //citas: any[] = [];
 
   citas = [
     //Citas de pruebas

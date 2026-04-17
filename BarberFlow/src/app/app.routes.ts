@@ -5,6 +5,7 @@ import { roleGuard } from './core/guards/role.guard';
 import { LoginComponent } from './pages/auth/login/login';
 import { RegisterComponent } from './pages/auth/register/register';
 import { MisCitasComponent } from './pages/appointments/mis-citas/mis-citas';
+import { ReservarCitaComponent } from './pages/appointments/reservar-cita/reservar-cita';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -13,7 +14,7 @@ export const routes: Routes = [
   {
     path: 'mis-citas',
     component: MisCitasComponent,
-    //canActivate: [authGuard], // Si se comenta es para hacer pruebas sin login
+    canActivate: [authGuard], // Si se comenta es para hacer pruebas sin login
   },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'reservar', component: ReservarCitaComponent },
 ];
