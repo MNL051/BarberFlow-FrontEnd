@@ -48,14 +48,14 @@ export class MisCitasComponent implements OnInit {
   }
 
   loadAppointments(id: string) {
-    this.appointmentsService.getUserAppointments(id).subscribe((data) => {
+    this.appointmentsService.getUsuarioCitas(id).subscribe((data) => {
       this.citas = data;
     });
   }
 
   cancelarCita(id: string) {
     if (confirm('¿Estás seguro de que deseas cancelar esta cita?')) {
-      this.appointmentsService.cancelAppointment(id).subscribe(() => {
+      this.appointmentsService.cancelarCita(id).subscribe(() => {
         // Recargar la lista tras cancelar
         const usuarioId = localStorage.getItem('usuario_id');
         if (usuarioId) this.loadAppointments(usuarioId);

@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-
 import { authGuard } from './core/guards//auth-guard';
 import { roleGuard } from './core/guards/role.guard';
 import { LoginComponent } from './pages/auth/login/login';
@@ -14,7 +13,7 @@ export const routes: Routes = [
   {
     path: 'mis-citas',
     component: MisCitasComponent,
-    canActivate: [authGuard], // Si se comenta es para hacer pruebas sin login
+    //canActivate: [authGuard], // Si se comenta es para hacer pruebas sin login
   },
   { path: 'reservar', component: ReservarCitaComponent },
 ];

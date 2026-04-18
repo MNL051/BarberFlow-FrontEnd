@@ -65,3 +65,17 @@ button:disabled {
   background: white;
   border: 1px solid #ccc;
 }
+
+.btn-hour {
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.btn-hour.seleccionado {
+  background-color: #b1c3e3;
+  border-color: #a88734;
+  color: black;
+  font-weight: bold;
+}
